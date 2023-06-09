@@ -1,6 +1,6 @@
 let preFetchResponses = new Map();
 
-const apiUrl = "https://api.github.com/repos/facebook/react";
+const apiUrl = "https://api.thecatapi.com/v1/images/search?t=1";
 
 self.addEventListener("fetch", (event) => {
   const url = event.request.url;

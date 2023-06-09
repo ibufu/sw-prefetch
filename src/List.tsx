@@ -1,33 +1,33 @@
 import { useEffect, useState } from "react";
-import { getGithubData } from "./api";
 
-function List() {
+function List({ api }: { api: () => Promise<any> }) {
   const [data, setData] = useState<{
-    name: string;
     id: number;
-    stargazers_count: number;
-    watchers_count: number;
-    forks_count: number;
+    url: string;
+    width: number;
+    height: number;
   }>();
+
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getGithubData();
-      setData(data.data);
+      const start = Date.now();
+      const data = await api();
+      setTime(Date.now() - start);
+      setData(data.data[0]);
     };
     fetchData();
-  }, []);
-
-  if (!data) {
-    return null;
-  }
+  }, [api]);
 
   return (
     <div>
-      <p>name: {data.name}</p>
-      <p>star: {data.stargazers_count}</p>
-      <p>watchers: {data.watchers_count}</p>
-      <p>forks: {data.forks_count}</p>
+      <p>
+        <img width={100} src={data?.url} />
+      </p>
+      <p>id: {data?.id}</p>
+      <p>url: {data?.url}</p>
+      <p>API time: {time}</p>
     </div>
   );
 }

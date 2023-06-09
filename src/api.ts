@@ -1,5 +1,9 @@
 import axios from "axios";
 
-export const getGithubData = async () => {
-  return await axios.get("https://api.github.com/repos/facebook/react");
+export const getData1 = async () => {
+  return await axios.get("https://api.thecatapi.com/v1/images/search?t=1");
+};
+
+export const getData2 = async () => {
+  return await axios.get("https://api.thecatapi.com/v1/images/search?t=2");
 };
