@@ -23,7 +23,7 @@ function List({ api }: { api: () => Promise<any> }) {
   return (
     <div>
       <p>
-        <img width={300} src={data?.url} alt="cat" />
+        <img width={200} src={data?.url} alt="cat" />
       </p>
       <p>id: {data?.id}</p>
       <p>url: {data?.url}</p>
