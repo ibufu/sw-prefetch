@@ -20,6 +20,10 @@ function List({ api }: { api: () => Promise<any> }) {
     fetchData();
   }, [api]);
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <div>
       <p>
